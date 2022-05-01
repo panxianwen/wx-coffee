@@ -1,0 +1,2 @@
+配置网关服务 通过映射路径 可以使用共同的端口去访问不同端口的服务
+如http://localhost:8040/api-view/products 代理PRODUCT-VIEW-SERVICE-FEIGN的所有服务

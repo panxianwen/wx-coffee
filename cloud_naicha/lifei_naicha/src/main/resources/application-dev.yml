@@ -1,0 +1,73 @@
+# 自定义配置
+my:
+  properties:
+    swaggerEnable: true
+    # 静态文件上传的路径
+    filePath:
+      imageFileRootPath: "D:/image/"
+
+eureka:   # 服务注册
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true    # true表示使用ip地址注册
+    instance-id: 数据服务      # 指定服务的id(Status的显示名称，可以写成IP，随意)
+    ip-address: localhost
+
+# 日志配置
+logging:
+  level:
+    root: info
+    com.yu: trace
+  # 可以日志文件的指定完整的路径 不指定路径在当前项目下生成springboot.log日志
+  path: D:/log/naicha
+  file:
+    max-size: 10MB # 日志归档的最大大小, 到了该大小就压缩打包
+    max-history: 10 # 最多保存日志归档文件的数量
+
+###################  mybatis-plus配置  ###################
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true # 下划线转驼峰
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl # 日志打印
+    call-setters-on-nulls: true  #设置当查询结果值为null时，同样映射该查询字段给map。
+  type-aliases-package: com.yu.**.pojo.** # *Mapper.xml里resultType的类型别名
+  mapper-locations: classpath*:mapper/**/*Mapper.xml
+  global-config:
+    db-config:
+      id-type: auto
+
+
+spring:
+  freemarker:
+    check-template-location: false
+    suffix: .html
+    content-type: text/html
+    enabled: true
+    cache: false
+    charset: utf-8
+
+  jackson:
+    time-zone: GMT+8
+    dateFormat: yyyy-MM-dd HH:mm:ss # date format
+
+  redis:
+    # 数据库索引
+    database: 0
+    host: localhost
+    port: 6379
+    password:
+    # 连接超时时间
+    timeout: 5000
+
+
+########### 数据源
+# 数据源配置
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    druid:
+      url: jdbc:mysql://localhost:3306/lifei_naicha?characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false
+      username: root
+      password: 12345678

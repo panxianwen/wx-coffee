@@ -1,0 +1,55 @@
+spring:
+  profiles:
+    active: prod # dev:开发环境 prod:生产环境
+#    active: dev # dev:开发环境 prod:生产环境
+
+  application:
+    name: naicha-data-service
+
+server:
+  port: 8001
+
+##################### 自定义配置 ####################
+my:
+  properties:
+    # 微信配置
+    wx:
+      appid: "wxaaa513b9af9bfca1"
+      appSecret: "6ec1a50ee7f7b54900926c613e1d5001" # 小程序的秘钥 不要去换
+      mchId: 1607726716 # 个人商户号
+      mchKey: "lifei000000000000000000000000000"
+      notifyUrl: "https://yuqy.club:9001/api-app/order/orderNotifyUrl" # 回调地址
+      keyPath:  # apiv3的证书地址 如: 直接放项目下，退款时要用
+      # apiSecret: 秘钥 lifei000000000000000000000000000
+      # apiv3Secret: lifei000000000000000000000000000 # 商户必须先设置好apiv3秘钥后才能解密回调通知，防止报文被他人恶意篡改。
+
+      mpAppid: # 公众号的appid
+      messageTemplateId: 6ygIMIDu-1-Ljv6U1Wk5Zx8LU5H9OtDlOxN0Y9YhLvc # 公众号订阅消息的消息模板id(取餐提醒)
+      templateNo: 250 # 模板编号
+#        取餐编号
+#        {{character_string12.DATA}}
+#        餐品详情
+#        {{thing11.DATA}}
+#        点餐时间
+#        {{date3.DATA}}
+
+    # 小程序配置
+    app:
+      shopName: "coffee小家"
+      packingPrice: 0             # 包装费  单位: 分
+      sendingPrice: 100           # 外卖配送费 单位: 分
+      sendingNeedLeastPrice: 1000 # 起送需要的最低价格 单位: 分
+      businessStartTime: 0       # 营业开始时间, 整点(不要大于结束时间)
+      businessEndTime: 24         # 营业结束时间, 整点(不要小于开始时间)
+      lianxidianhua1: 18383507282 # 联系电话1
+      lianxidianhua2: 15700192440 # 联系电话2
+      lianxiQQ: 2460521709        # 联系QQ
+      shopStatus: true            # 店铺开放状态, 商家休息|营业中
+      shopNotice: "10点到22点可以送餐~"  # 菜单上面的公告通知
+      testUserLoginEnabled: true  # 允许测试号登陆，供开放测试用
+
+    # jwt配置
+    jwt:
+      secret: "yu_qian_yao_~!@#$%^&*()_+" # 服务器jwt密钥用于再次加密
+
+

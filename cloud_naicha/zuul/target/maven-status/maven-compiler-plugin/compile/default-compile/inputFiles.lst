@@ -1,0 +1,5 @@
+/Users/panxianwen/Code/wx-applet/naicha/cloud_naicha/zuul/src/main/java/com/yu/filter/MyErrorFilter.java
+/Users/panxianwen/Code/wx-applet/naicha/cloud_naicha/zuul/src/main/java/com/yu/config/TomcatConfig.java
+/Users/panxianwen/Code/wx-applet/naicha/cloud_naicha/zuul/src/main/java/com/yu/filter/MyZuulFilter.java
+/Users/panxianwen/Code/wx-applet/naicha/cloud_naicha/zuul/src/main/java/com/yu/filter/MyFallback.java
+/Users/panxianwen/Code/wx-applet/naicha/cloud_naicha/zuul/src/main/java/com/yu/ApiZuulRun.java

@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: product-service-zuul
+
+server:
+  port: 9001 # 作为https的端口
+#  ssl:
+#    key-store-password: fds123-+
+#    key-store: classpath:yuqy.club.jks
+#    key-store-type: JKS
+  ssl:
+    enabled: true
+    key-store-password: P@ssw0rd
+    key-store: classpath:pxw.jks
+    key-store-type: JKS
+
+eureka:   #服务注册  作为视图微服务
+  client:
+    serviceUrl:
+      defaultZone: http://114.115.148.124:8761/eureka/
+#      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true      # true表示使用ip地址注册
+    instance-id: zuul网关        # 指定服务的id(Status的显示名称，可以写成IP，随意)
+    ip-address: 114.115.148.124
+#    ip-address: 127.0.0.1
+
+
+
+### 自定义配置
+# 额外的http访问端口
+myProperty.extraHttpPort: 9002
+
+# 路由映射
+zuul:
+  routes:
+    api-a:
+      path: /**
+      serviceId: naicha-data-service
+    api-test:
+      path: /api-test/**
+      serviceId: product-data-service
+
+
+
+

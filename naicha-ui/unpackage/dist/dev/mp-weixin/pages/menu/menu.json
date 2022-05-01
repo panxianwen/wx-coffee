@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "在线点餐",
+  "navigationBarTextStyle": "black",
+  "navigationBarBackgroundColor": "#ffff",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50,
+  "usingComponents": {
+    "modal": "/components/modal/modal",
+    "popup-layer": "/components/popup-layer/popup-layer"
+  }
+}

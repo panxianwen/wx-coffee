@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "下单",
+  "navigationBarTextStyle": "black",
+  "navigationBarBackgroundColor": "#f1f8fa",
+  "usingComponents": {
+    "list-cell": "/components/list-cell/list-cell",
+    "modal": "/components/modal/modal"
+  }
+}

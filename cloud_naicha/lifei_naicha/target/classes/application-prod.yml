@@ -1,0 +1,110 @@
+# 2核4G服务器ip     114.115.148.124
+
+eureka:   #服务注册  作为视图微服务
+  client:
+    serviceUrl:
+      defaultZone: http://114.115.148.124:8761/eureka/
+  instance:
+    prefer-ip-address: true      # true表示使用ip地址注册
+    instance-id: 数据服务        # 指定服务的id(Status的显示名称，可以写成IP，随意)
+    ip-address: 114.115.148.124
+
+# 自定义配置
+my:
+  properties:
+    swaggerEnable: true
+    # 静态文件上传的路径
+    filePath:
+      imageFileRootPath: "/image/"
+
+# 日志配置
+logging:
+  level:
+    root: error
+    com.yu: warn
+  # 可以日志文件的指定完整的路径 不指定路径在当前项目下生成springboot.log日志
+  path: /log/naicha
+  file:
+    max-size: 10MB # 日志归档的最大大小, 到了该大小就压缩打包
+    max-history: 10 # 最多保存日志归档文件的数量
+
+###################  mybatis-plus配置  ###################
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true # 下划线转驼峰
+  type-aliases-package: com.yu.**.pojo # *Mapper.xml里resultType的类型别名
+  mapper-locations: classpath*:mapper/**/*Mapper.xml
+  global-config:
+    db-config:
+      id-type: auto
+
+
+spring:
+  freemarker:
+    check-template-location: false
+    suffix: .html
+    content-type: text/html
+    enabled: true
+    cache: false
+    charset: utf-8
+
+  jackson:
+    time-zone: GMT+8
+    dateFormat: yyyy年MM月dd日 HH:mm:ss # date format
+
+  redis:
+    database: 0 #数据库索引
+    host: 114.115.148.124
+    port: 6379
+    password: 123456
+    timeout: 5000 #连接超时时间
+
+  ########### 数据源
+  # 数据源配置
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    druid:
+      url: jdbc:mysql://114.115.148.124:3306/lifei_naicha?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8
+      username: lifei_naicha
+      password: ykWptZkbP6h828Wp
+      # 初始连接数
+      initialSize: 4
+      # 最小连接池数量
+      minIdle: 4
+      # 最大连接池数量
+      maxActive: 8
+      # 配置获取连接等待超时的时间
+      maxWait: 60000
+      # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      timeBetweenEvictionRunsMillis: 60000
+      # 配置一个连接在池中最小生存的时间，单位是毫秒
+      minEvictableIdleTimeMillis: 300000
+      # 配置一个连接在池中最大生存的时间，单位是毫秒
+      maxEvictableIdleTimeMillis: 900000
+      # 配置检测连接是否有效
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      webStatFilter:
+        enabled: true
+      statViewServlet:
+        enabled: true
+        # 设置白名单，不填则允许所有访问
+        allow: localhost
+        url-pattern: /druid/*
+        # 控制台管理用户名和密码
+        login-username: admin
+        login-password: admin
+      filter:
+        stat:
+          enabled: true
+          # 慢SQL记录
+          log-slow-sql: true
+          slow-sql-millis: 1000
+          merge-sql: true
+        wall:
+          config:
+            multi-statement-allow: true
+
